@@ -131,13 +131,25 @@
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2",
     "webpack-manifest-plugin": "^1.1.0",
-    "wnumb": "^1.0.4"
+    "wnumb": "^1.0.4",
+    "@bower_components/chosen": "harvesthq/bower-chosen#~1.5.1",
+    "@bower_components/jfeed": "jfhovinne/jFeed#*",
+    "@bower_components/jquery": "jquery/jquery-dist#~2.1.1",
+    "@bower_components/jquery-ujs": "rails/jquery-ujs#~1.0.3",
+    "@bower_components/jquery.uls": "mattfordham/jquery.uls#*",
+    "@bower_components/list.fuzzysearch.js": "javve/list.fuzzysearch.js#~0.1.0",
+    "@bower_components/list.js": "wintr/list.js#76c5632d86e11711b965878d58e1f4c90f6bcb18",
+    "@bower_components/lodash": "lodash/lodash#~3.9.0",
+    "@bower_components/moment": "moment/moment#~2.10.3",
+    "@bower_components/moment-recur": "c-trimm/moment-recur#~1.0.5",
+    "@bower_components/trix": "basecamp/trix#~0.10.1"
   },
   "scripts": {
     "test": "jest",
     "start": "gulp dev",
     "hot": "gulp hot-dev",
-    "build": "gulp build"
+    "build": "gulp build",
+    "postinstall": "rm -rf vendor && ln -sf node_modules/@bower_components vendor"
   },
   "devDependencies": {
     "copy-to-clipboard": "^3.0.5",
@@ -167,5 +179,8 @@
     "reportDir": "js_coverage",
     "sourceMap": false,
     "instrument": false
+  },
+  "engines": {
+    "yarn": ">= 1.0.0"
   }
 }
