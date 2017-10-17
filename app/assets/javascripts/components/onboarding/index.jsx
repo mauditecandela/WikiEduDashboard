@@ -9,6 +9,7 @@ const getReturnToParam = function () {
 };
 
 const getCurrentUser = () => $('#react_root').data('current_user');
+const getEmailable = () => $('#react_root').data('emailable');
 
 // Router root
 const Root = createReactClass({
@@ -29,7 +30,8 @@ const Root = createReactClass({
           {React.cloneElement(this.props.children, {
             key: this.props.location.pathname,
             returnToParam: getReturnToParam(),
-            currentUser: getCurrentUser()
+            currentUser: getCurrentUser(),
+            emailable: getEmailable()
           })}
         </TransitionGroup>
       </div>

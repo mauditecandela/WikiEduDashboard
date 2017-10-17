@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router';
 import API from '../../utils/api.js';
 import NotificationActions from '../../actions/notification_actions.js';
+import PleaseEnableEmail from './please_enable_email.jsx';
 
 const Form = createReactClass({
   propTypes: {
     currentUser: PropTypes.object,
-    returnToParam: PropTypes.string
+    returnToParam: PropTypes.string,
+    emailable: PropTypes.bool
   },
 
   getInitialState() {
@@ -55,10 +57,15 @@ const Form = createReactClass({
   },
 
   render() {
+    let pleaseEnableEmail;
+    if (!this.props.emailable) {
+      pleaseEnableEmail = <PleaseEnableEmail />;
+    }
     const submitText = this.state.sending ? 'Sending' : 'Submit';
     const disabled = this.state.sending;
     return (
       <div className="form">
+        {pleaseEnableEmail}
         <h1>Let’s get some business out of the way.</h1>
         <form className="panel" onSubmit={this._handleSubmit} ref="form">
           <div className="form-group">

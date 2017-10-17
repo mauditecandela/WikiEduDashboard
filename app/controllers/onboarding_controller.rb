@@ -7,7 +7,12 @@ class OnboardingController < ApplicationController
 
   def index
     # Require authentication
-    redirect_to root_path unless user_signed_in?
+    unless user_signed_in?
+      redirect_to root_path
+      return
+    end
+    @emailable = CheckWikiEmail.new(user: current_user,
+                                    wiki: Wiki.default_wiki).emailable?
   end
 
   # Onboarding sets the user's real name, email address, and optionally instructor permissions
