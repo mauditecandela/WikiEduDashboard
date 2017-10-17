@@ -20,7 +20,8 @@ const InlineUsers = React.createClass({
       const link = `/users/${user.username}`; // User profile page
       if (user.real_name) {
         const email = user.email ? ` / ${user.email}` : '';
-        extraInfo = ` (${user.real_name}${email})`;
+        const roleDescription = user.role_description ? ` — ${user.role_description}` : '';
+        extraInfo = ` (${user.real_name}${email}${roleDescription})`;
       } else {
         extraInfo = '';
       }
